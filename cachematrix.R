@@ -1,5 +1,9 @@
 ## This files contains makeCacheMatrix and cacheSolve functions
-## used to store and recever from a memory cache the inverse of a matrix
+## used to store and recover from a memory cache the inverse of a matrix
+
+
+## makeCacheMatrix creates a function to hold the "invcache" and "x" variables
+## contains get, set, get inv and setinv functions
 
 makeCacheMatrix <- function(x) {
   invcache <- NULL
@@ -14,6 +18,9 @@ makeCacheMatrix <- function(x) {
        setinv = setinv,
        getinv = getinv)
 }
+
+## cacheSolve looks for a value in x.getinv. If there's a value, returns the cached value. If there isn't calculates
+## the inverse and stores in the function through setinv 
 
 cacheSolve <- function(x) {
   m <- x$getinv()
@@ -30,4 +37,3 @@ cacheSolve <- function(x) {
     m
   }
 }
-

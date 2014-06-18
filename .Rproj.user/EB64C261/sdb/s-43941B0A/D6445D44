@@ -1,12 +1,12 @@
 {
-    "contents" : "## Put comments here that give an overall description of what your\n## functions do\n\n## Write a short comment describing this function\n\nmakeCacheMatrix <- function(x = matrix()) {\n\n}\n\n\n## Write a short comment describing this function\n\ncacheSolve <- function(x, ...) {\n        ## Return a matrix that is the inverse of 'x'\n  \n  return (ginv(x))\n  \n}\n",
+    "contents" : "## This files contains makeCacheMatrix and cacheSolve functions\n## used to store and recover from a memory cache the inverse of a matrix\n\n\n## makeCacheMatrix creates a function to hold the \"invcache\" and \"x\" variables\n## contains get, set, get inv and setinv functions\n\nmakeCacheMatrix <- function(x) {\n  invcache <- NULL\n  set <- function(y) {\n    x <<- y\n    invcache <<- NULL\n  }\n  get <- function() x\n  setinv <- function(inv) invcache <<- inv\n  getinv <- function() invcache\n  list(set = set, get = get,\n       setinv = setinv,\n       getinv = getinv)\n}\n\n## cacheSolve looks for a value in x.getinv. If there's a value, returns the cached value. If there isn't calculates\n## the inverse and stores in the function through setinv \n\ncacheSolve <- function(x) {\n  m <- x$getinv()\n  if(!is.null(m)) {\n    message(\"getting cached data\")\n    m\n  }\n  else\n  {  \n    message(\"calculating inverse\")\n    data <- x$get()\n    m <- solve(data)\n    x$setinv(m)\n    m\n  }\n}",
     "created" : 1402867270980.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2653409957",
+    "hash" : "581597298",
     "id" : "D6445D44",
-    "lastKnownWriteTime" : 1402868057,
+    "lastKnownWriteTime" : 1403128411,
     "path" : "C:/wamp/www/ProgrammingAssignment2/cachematrix.R",
     "project_path" : "cachematrix.R",
     "properties" : {
